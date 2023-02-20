@@ -7,6 +7,8 @@
         <div style="border-top:1px gray solid;">
             <h2>{{$article->title}}</h2>
             <p>{{$article->created_at}}由{{$article->user->name}}分享</p>
+            <a href="{{route('articles.edit',$article)}}">編輯文章</a>
         </div>
+
     @endforeach
 @endsection
