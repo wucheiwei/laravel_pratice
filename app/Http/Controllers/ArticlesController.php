@@ -49,4 +49,10 @@ class ArticlesController extends Controller
         $article->update($content);
         return redirect()->route('root')->with('notice','更新成功');
     }
+
+    public function destroy($id){
+        $article = auth()->user()->articles->find($id);
+        $article->delete();
+        return redirect()->route('root')->with('notice','文章已刪除');
+    }
 }

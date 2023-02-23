@@ -9,6 +9,11 @@
             <p>{{$article->created_at}}由{{$article->user->name}}分享</p>
             <a href="{{route('articles.edit',$article)}}">編輯文章</a>
         </div>
-
+        
+        <form action="{{route('articles.destroy',$article)}}"method='post'>
+            @csrf
+            @method('delete')
+            <button type='submit' style="color:red">刪除</button>
+        </form>
     @endforeach
 @endsection
