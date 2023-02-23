@@ -7,12 +7,17 @@ use App\Models\Article;
 class ArticlesController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index','show');
     }
 
     public function index(){
         $articles = Article::orderBy('id','desc')->get();
         return view('articles.index',['articles'=>$articles]);
+    }
+
+    public function show($id){
+        $article = Article::find($id);
+        return view('articles.show',['article'=>$article]);
     }
     
     public function create(){
